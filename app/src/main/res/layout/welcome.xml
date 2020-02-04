@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--This is the title text -->
+        <TextView
+            android:id="@+id/title_expo"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:ems="1"
+            android:lineSpacingExtra="40dp"
+            android:text="博览"
+            android:textSize="35dp" />
+        <!--This is the title welcome_seal pic-->
+        <ImageView
+            android:id="@+id/title_seal_pic"
+            android:layout_width="35dp"
+            android:layout_height="58dp"
+            android:layout_below="@id/title_expo"
+            android:layout_toRightOf="@id/title_expo"
+            android:src="@drawable/welcome_seal" />
+        <!--This is the title background pic-->
+        <ImageView
+            android:id="@+id/title_page_bg"
+            android:src="@drawable/welcome_title_page_bg"
+            android:layout_below="@id/title_seal_pic"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
