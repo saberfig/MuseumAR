@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes" name="viewport">
+
+    <title></title>
+
+    <script src="https://www.wikitude.com/libs/architect.js"></script>
+    <script type="text/javascript" src="ade.js"></script><!--ade脚本用于让前端数据和后端数据相匹配-->
+    <script type="text/javascript" src="//www.jb51.net/jslib/jquery/jquery.min.js">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            //打开详情页面，使用url地址栏传值(传识别出物体的id)
+            var id = 1;//这里将1换为识别后得到的id即可
+
+            $("#details").on("click",function(){
+                url = "html/detail.html?id="+id;
+                window.location.href = url;
+            });
+
+            $("#ar").on("click",function(){
+                url = "html/ar.html?id="+id;
+                window.location.href = url;
+            });
+        });
+    </script>
+
+    <link rel="stylesheet" href="css/default.css">
+</head>
+
+<body>
+
+<div style="bottom: 20px;width:100%;">
+    <button id="photoAlbum" class="icons gray_icons" style="left:16px;bottom: 20px;">
+        <img src='assets/icons/photo_album_button.png'/>
+    </button>
+    <button id="return_button" class="icons gray_icons" onclick="window.close();" style="right:16px;bottom: 20px;">
+        <img src='assets/icons/x_button.png'/>
+    </button>
+
+        <button id="details" class="icons blue_icons" style="left:81px; ">
+            <img src='assets/icons/slide_up_button.png'/>
+        </button>
+        <button id="ar" class="icons blue_icons" style="right:81px; ">
+            <img src='assets/icons/ar_button.png'/>
+        </button>
+
+    <div id="infoBox"></div>
+    <div id="loadingMessage"></div>
+</div>
+
+<script src="js/static.js"></script>
+</body>
+</html>

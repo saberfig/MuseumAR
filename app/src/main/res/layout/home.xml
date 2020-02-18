@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#81D3F8">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="117dp"
+        android:layout_marginEnd="117dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--This is the more button-->
+        <ImageView
+            android:id="@+id/more_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/more_button"
+            tools:ignore="ContentDescription"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+
+        <!--This is the Slide up button-->
+        <ImageView
+            android:id="@+id/slide_up"
+            android:layout_width="103dp"
+            android:layout_height="83dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="160dp"
+            android:layout_marginEnd="160dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/slide_up_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription"
+            tools:layout_editor_absoluteY="530dp" />
+
+        <!--This is the camera button,which attach to mainActivity-->
+        <FrameLayout
+            android:id="@+id/main_button"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="198dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/round_blue"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/camera"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_alignBottom="@+id/main_button"
+                android:layout_margin="37.5dp"
+                android:src="@drawable/camera"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
