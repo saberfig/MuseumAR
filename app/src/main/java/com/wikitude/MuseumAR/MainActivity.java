@@ -3,6 +3,7 @@ package com.wikitude.MuseumAR;
 import android.Manifest;
 import android.os.Build;
 import android.support.annotation.Nullable;
+<<<<<<< HEAD
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ViewGroup;
@@ -10,12 +11,26 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectJavaScriptInterfaceListener;
+=======
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.FrameLayout;
+import android.widget.Toast;
+
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
 import com.wikitude.architect.ArchitectStartupConfiguration;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.common.camera.CameraSettings;
 
+<<<<<<< HEAD
 import org.json.JSONObject;
 
+=======
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
         config.setCameraFocusMode(CameraSettings.CameraFocusMode.CONTINUOUS);
         config.setCamera2Enabled(true);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
         //architectView=new ArchitectView(this);
         this.architectView=(ArchitectView)this.findViewById(R.id.architectView);
         if(architectView.getParent()!=null){
@@ -65,12 +83,15 @@ public class MainActivity extends AppCompatActivity {
 
         try{
             architectView.load("index.html");
+<<<<<<< HEAD
             architectView.addArchitectJavaScriptInterfaceListener(new ArchitectJavaScriptInterfaceListener() {
                 @Override
                 public void onJSONObjectReceived(JSONObject jsonObject) {
 
                 }
             });
+=======
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
         }catch(IOException e){
             Toast.makeText(this, "Could not load AR experience", Toast.LENGTH_SHORT).show();
         }

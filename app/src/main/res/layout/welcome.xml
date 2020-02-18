@@ -17,8 +17,12 @@
             android:ems="1"
             android:lineSpacingExtra="40dp"
             android:text="博览"
+<<<<<<< HEAD
             android:textSize="35sp"
             tools:ignore="HardcodedText" />
+=======
+            android:textSize="35dp" />
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
         <!--This is the title welcome_seal pic-->
         <ImageView
             android:id="@+id/title_seal_pic"
@@ -26,6 +30,7 @@
             android:layout_height="58dp"
             android:layout_below="@id/title_expo"
             android:layout_toRightOf="@id/title_expo"
+<<<<<<< HEAD
             android:src="@drawable/welcome_seal"
             tools:ignore="ContentDescription" />
         <!--This is the title background pic-->
@@ -37,6 +42,17 @@
             android:layout_centerHorizontal="true"
             android:src="@drawable/welcome_title_page_bg"
             tools:ignore="ContentDescription" />
+=======
+            android:src="@drawable/welcome_seal" />
+        <!--This is the title background pic-->
+        <ImageView
+            android:id="@+id/title_page_bg"
+            android:src="@drawable/welcome_title_page_bg"
+            android:layout_below="@id/title_seal_pic"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

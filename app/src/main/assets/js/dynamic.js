@@ -14,28 +14,18 @@ var previousRotationValue={
     z:0
 };
 
-<<<<<<< HEAD
 var previousScaleValue = 0.002;//全局变量，表示文物静态模型的大小
 var elfScale = 0.03;//全局变量，表示小精灵的大小
+var bucketScale = 0.0047;//木桶模型的大小
+var waterScale = 0.11;//倒水动画的模型大小
 var oneFingerGestureAllowed = false;//先禁止单指模式识别（存疑）
+var flag = true;
 
-=======
-//全局变量，表示文物静态模型的大小
-var previousScaleValue = 0.002;
-//全局变量，表示小精灵的大小
-var elfScale = 0.0;
-//先禁止单指模式识别（存疑）
-var oneFingerGestureAllowed = false;
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
 //定义方法，启动二指模式识别（存疑）
 AR.context.on2FingerGestureStarted = function() {
     oneFingerGestureAllowed = false;
 };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
 //定义方法，js文件的入口
 var World = {
     loaded: false,
@@ -72,28 +62,25 @@ var World = {
     /*创建展示的静态3D模型，所有可能出现的模型都在drawables数组中一次性加载的情况*/
     createModels:function createModelsFn(){
 
-        //创建待播放的音频
-<<<<<<< HEAD
-        this.introductionSound = new AR.Sound("assets/audio/defaultAudio.mp3", {
+        //创建音频资源
+        this.introductionSound0 = new AR.Sound("assets/audio/defaultAudio.mp3", {
+            onError: World.onError
+        });//默认音频，在初始时点击小精灵用到
+
+        this.introductionSound1 = new AR.Sound("assets/audio/audio1.mp3", {
             onError: World.onError
         });
-        this.introductionSound.load();
-=======
-        this.introductionSound = new AR.Sound("assets/audio/audio1.mp3", {
-            onLoaded: function() {//加载之后直接播放音频
-                introductionSound.play();
-            },
-            onError: World.onError
-        });
-        this.introductionSound.load();//加载音频源
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
+
+        //音频加载
+        this.introductionSound0.load();
+        this.introductionSound1.load();
 
         /*添加小精灵的模型*/
-        this.elf = new AR.Model("assets/object/elf.wt3",{
+        this.elf = new AR.Model("assets/augmented/elf.wt3",{
             scale: {
-                x: 0.03,
-                y: 0.03,
-                z: 0.03
+                x: elfScale,
+                y: elfScale,
+                z: elfScale
             },
             translate: {
                 x: 0.915,
@@ -108,7 +95,7 @@ var World = {
                 }
             },
             onClick: function() {
-                World.playIntroduction();
+                World.playIntroduction(flag);
             },
             enabled: false,//最初设置模型为不可用
             onLoaded: World.showInfoBar,
@@ -116,98 +103,88 @@ var World = {
         });
 
         /*添加后母戊鼎的静态文物3D模型*/
-        this.houMuWuDing = new AR.Model("assets/object/houMuWuDing.wt3", {
+        this.bucket = new AR.Model("assets/augmented/bucket.wt3", {
             scale: {
-                x: 0.002,
-                y: 0.002,
-                z: 0.002
+                x: bucketScale,
+                y: bucketScale,
+                z: bucketScale
             },
             translate: {
-                x: -0.176,
-                y: 0.751,
-                z: 0.648
+                x: 0.827,
+                y: 0.509,
+                z: 0.107
             },
             rotate: {
                 global:{
-                    x:270,
-                    y:0,
-                    z:0
+                    x:320,
+                    y:90,
+                    z:90
                 }
             },
-            //旋转
-            onDragBegan:function(){
-                oneFingerGestureAllowed=true;
-                return true;
-            },
-            onDragChanged:function(x,y,intersectionX, intersectionY){
-                if(oneFingerGestureAllowed){
-                    this.rotate={
-                        x:previousRotationValue.x + y*250,
-                        z:previousRotationValue.z + x*100
-                    };
-                }
-                return true;
-            },
-            onDragEnded:function(){
-                previousRotationValue.x=this.rotate.x;
-                previousRotationValue.z=this.rotate.z;
-                return true;
-            },
+
             //移动
             onPanBegan: function() {
                 oneFingerGestureAllowed=false;
                 return true;
             },
             onPanChanged: function(x,y) {
-            //有问题，把y轴都换成了z轴
-            this.translate={
-                x:previousTranslateValue.x+x,
-                z:previousTranslateValue.z-y
-            }
-            return true;
+                //有问题，把y轴都换成了z轴
+                this.translate={
+                    x:previousTranslateValue.x+x,
+                    z:previousTranslateValue.z-y
+                }
+                return true;
             },
             onPanEnded: function() {
                 previousTranslateValue.x=this.translate.x;
                 previousTranslateValue.z=this.translate.z;
+
+               // World.playWaterAnimation();
                 return true;
             },
-            //放大
-            onScaleBegan: function() {
-                oneFingerGestureAllowed=false;
-                return true;
-            },
-            onScaleChanged: function(scale) {
-                var scaleValue = previousScaleValue * scale;
-                this.scale = {
-                    x: scaleValue,
-                    y: scaleValue,
-                    z: scaleValue
-                };
-                return true;
-            },
-            onScaleEnded: function() {
-                previousScaleValue = this.scale.x;
-                return true;
-            },
+
             enabled: false,//最初设置模型为不可用
             onLoaded: World.showInfoBar,
             onError: World.onError
         });
 
-         //播放后母戊鼎的出现时的缩放动画
-        this.appearingAnimation = this.createAppearingAnimation(this.houMuWuDing, previousScaleValue);//这个参数的值？
+//        this.boiledWater = new AR.Model("assets/augmented/boiledWater.wt3",{
+//            scale:{
+//                x:waterScale,
+//                y:waterScale,
+//                z:waterScale
+//            },
+//            translate:{
+//                x:-0.302,
+//                y:0.981,
+//                z:-0.17
+//            },
+//            rotate:{
+//                 global:{
+//                    x:270,
+//                    y:0,
+//                    z:0
+//                }
+//            }
+//            enabled: false,//最初设置模型为不可用
+//            onLoaded: World.showInfoBar,
+//            onError: World.onError
+//        });
+
 
         //将创建的所有3D模型添加到drawables数组中，方便多资源调用
         World.drawables.push(this.elf);
-        World.drawables.push(this.houMuWuDing);
+        World.drawables.push(this.bucket);
+//        World.drawables.push(this.boiledWater);
 
     },
+
+
 
     //对象识别成功时，设置drawables数组中所有的模型为可见
     objectRecognized: function objectRecognizedFn() {
         World.hideInfoBar();
         World.setAugmentationsEnabled(true);
-        World.appear();//播放出现动画
     },
 
     //对象丢失时将所有的模型设置为不可见
@@ -223,34 +200,15 @@ var World = {
     },
 
     //小精灵播放语音，待完善
-<<<<<<< HEAD
-    playIntroduction:function playIntroductionFn(){
-        World.introductionSound.play();
-=======
-    playIntroduction:function palyIntroductionFn(){
-       World.introductionSound.play();
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
-    },
-
-    //创建静态模型的出现动画
-    createAppearingAnimation: function createAppearingAnimationFn(model, scale) {
-
-        var sx = new AR.PropertyAnimation(model, "scale.x", 0, scale, 1500, {
-            type: AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC
-        });
-        var sy = new AR.PropertyAnimation(model, "scale.y", 0, scale, 1500, {
-            type: AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC
-        });
-        var sz = new AR.PropertyAnimation(model, "scale.z", 0, scale, 1500, {
-            type: AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC
-        });
-
-        return new AR.AnimationGroup(AR.CONST.ANIMATION_GROUP_TYPE.PARALLEL, [sx, sy, sz]);//返回一个动画组
-    },
-
-    appear: function appearFn() {
-        World.hideInfoBar();
-        World.appearingAnimation.start();//播放静态模型的出现动画
+    playIntroduction:function playIntroductionFn(enabled){
+        if(enabled == true){
+            World.introductionSound0.play();
+            flag = false;
+        }
+        else{
+            World.introductionSound1.play();
+            flag = true;
+        }
     },
 
     onError: function onErrorFn(error) {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face{
     font-family:ZhongSong;
     src:url("../fonts/ZhongSong.ttf");
@@ -133,3 +134,39 @@
     outline:none;
     background-color:#ffffff;
 }
+=======
+.info {
+    font-size: large;
+    position: absolute;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #BBBBBB;
+    text-align: center;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    display: table;
+}
+
+#infoBox {
+    display: none;
+}
+
+#infoBox .text {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    width: 50%;
+}
+
+#infoBox .icons {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+}
+
+#infoBox .icons img {
+    margin-left: 15px;
+}
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9

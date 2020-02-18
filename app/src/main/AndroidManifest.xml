@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
     package="com.wikitude.MuseumAR">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -26,7 +29,11 @@
         android:theme="@style/AppTheme"
 
         android:hardwareAccelerated="true"
+<<<<<<< HEAD
         tools:ignore="GoogleAppIndexingWarning">
+=======
+        >
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
         <activity
             android:name="com.wikitude.MuseumAR.Welcome">
 
@@ -35,6 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".MainActivity" android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
@@ -42,6 +50,10 @@
             android:name="com.wikitude.MuseumAR.Home">
         </activity>
         <activity android:name=".IdentifiableList" />
+=======
+        <activity android:name=".MainActivity" android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
     </application>
 
 </manifest>

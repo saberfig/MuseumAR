@@ -21,16 +21,27 @@ android {
 
 dependencies {
     //按照教程添加
+<<<<<<< HEAD
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation(name: 'wikitudesdk', ext: 'aar')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.google.ar:core:1.1.0'
+=======
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation (name: 'wikitudesdk', ext:'aar')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.google.ar:core:1.1.0'
+
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+<<<<<<< HEAD
     implementation 'com.howshea:roundCornerImageView:1.0.2'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.71'
+=======
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
 }
 
 repositories {

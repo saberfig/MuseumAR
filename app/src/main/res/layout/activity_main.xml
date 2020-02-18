@@ -12,7 +12,10 @@
         android:layout_height="match_parent">
     </com.wikitude.architect.ArchitectView>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
     <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
