@@ -1,6 +1,6 @@
 /*展示静态文物模型界面*/
 
-//test
+
 
 //声明全局变量，存储控制的模型的位置数据
 var previousTranslateValue = {
