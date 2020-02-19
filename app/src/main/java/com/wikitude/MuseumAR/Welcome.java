@@ -27,11 +27,7 @@ public class Welcome extends Activity{
         }
     };
     public void getHome(){
-<<<<<<< HEAD
         Intent intent = new Intent(Welcome.this,Home.class);
-=======
-        Intent intent = new Intent(Welcome.this,MainActivity.class);
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
         startActivity(intent);
         finish();
     }
