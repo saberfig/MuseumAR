@@ -1,41 +1,28 @@
 /*展示静态文物模型界面*/
 
 //声明全局变量，存储控制的模型的位置数据
-var previousTranslateValue={
-    x:0,
-    y:0,
-    z:0
+var previousTranslateValue = {
+    x: 0,
+    y: 0,
+    z: 0
 };
 
 //声明全局变量，存储控制的模型的角度数据
-var previousRotationValue={
-    x:0,
-    y:0,
-    z:0
+var previousRotationValue = {
+    x: 0,
+    y: 0,
+    z: 0
 };
 
-<<<<<<< HEAD
 var previousScaleValue = 0.002;//全局变量，表示文物静态模型的大小
 var elfScale = 0.03;//全局变量，表示小精灵的大小
 var oneFingerGestureAllowed = false;//先禁止单指模式识别（存疑）
 
-=======
-//全局变量，表示文物静态模型的大小
-var previousScaleValue = 0.002;
-//全局变量，表示小精灵的大小
-var elfScale = 0.0;
-//先禁止单指模式识别（存疑）
-var oneFingerGestureAllowed = false;
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
 //定义方法，启动二指模式识别（存疑）
-AR.context.on2FingerGestureStarted = function() {
+AR.context.on2FingerGestureStarted = function () {
     oneFingerGestureAllowed = false;
 };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
 //定义方法，js文件的入口
 var World = {
     loaded: false,
@@ -70,26 +57,16 @@ var World = {
 
 
     /*创建展示的静态3D模型，所有可能出现的模型都在drawables数组中一次性加载的情况*/
-    createModels:function createModelsFn(){
+    createModels: function createModelsFn() {
 
         //创建待播放的音频
-<<<<<<< HEAD
         this.introductionSound = new AR.Sound("assets/audio/defaultAudio.mp3", {
             onError: World.onError
         });
         this.introductionSound.load();
-=======
-        this.introductionSound = new AR.Sound("assets/audio/audio1.mp3", {
-            onLoaded: function() {//加载之后直接播放音频
-                introductionSound.play();
-            },
-            onError: World.onError
-        });
-        this.introductionSound.load();//加载音频源
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
 
         /*添加小精灵的模型*/
-        this.elf = new AR.Model("assets/object/elf.wt3",{
+        this.elf = new AR.Model("assets/object/elf.wt3", {
             scale: {
                 x: 0.03,
                 y: 0.03,
@@ -101,13 +78,13 @@ var World = {
                 z: 0.092
             },
             rotate: {
-                global:{
-                    x:0,
-                    y:0,
-                    z:0
+                global: {
+                    x: 0,
+                    y: 0,
+                    z: 0
                 }
             },
-            onClick: function() {
+            onClick: function () {
                 World.playIntroduction();
             },
             enabled: false,//最初设置模型为不可用
@@ -128,55 +105,55 @@ var World = {
                 z: 0.648
             },
             rotate: {
-                global:{
-                    x:270,
-                    y:0,
-                    z:0
+                global: {
+                    x: 270,
+                    y: 0,
+                    z: 0
                 }
             },
             //旋转
-            onDragBegan:function(){
-                oneFingerGestureAllowed=true;
+            onDragBegan: function () {
+                oneFingerGestureAllowed = true;
                 return true;
             },
-            onDragChanged:function(x,y,intersectionX, intersectionY){
-                if(oneFingerGestureAllowed){
-                    this.rotate={
-                        x:previousRotationValue.x + y*250,
-                        z:previousRotationValue.z + x*100
+            onDragChanged: function (x, y, intersectionX, intersectionY) {
+                if (oneFingerGestureAllowed) {
+                    this.rotate = {
+                        x: previousRotationValue.x + y * 250,
+                        z: previousRotationValue.z + x * 100
                     };
                 }
                 return true;
             },
-            onDragEnded:function(){
-                previousRotationValue.x=this.rotate.x;
-                previousRotationValue.z=this.rotate.z;
+            onDragEnded: function () {
+                previousRotationValue.x = this.rotate.x;
+                previousRotationValue.z = this.rotate.z;
                 return true;
             },
             //移动
-            onPanBegan: function() {
-                oneFingerGestureAllowed=false;
+            onPanBegan: function () {
+                oneFingerGestureAllowed = false;
                 return true;
             },
-            onPanChanged: function(x,y) {
-            //有问题，把y轴都换成了z轴
-            this.translate={
-                x:previousTranslateValue.x+x,
-                z:previousTranslateValue.z-y
-            }
-            return true;
+            onPanChanged: function (x, y) {
+                //有问题，把y轴都换成了z轴
+                this.translate = {
+                    x: previousTranslateValue.x + x,
+                    z: previousTranslateValue.z - y
+                }
+                return true;
             },
-            onPanEnded: function() {
-                previousTranslateValue.x=this.translate.x;
-                previousTranslateValue.z=this.translate.z;
+            onPanEnded: function () {
+                previousTranslateValue.x = this.translate.x;
+                previousTranslateValue.z = this.translate.z;
                 return true;
             },
             //放大
-            onScaleBegan: function() {
-                oneFingerGestureAllowed=false;
+            onScaleBegan: function () {
+                oneFingerGestureAllowed = false;
                 return true;
             },
-            onScaleChanged: function(scale) {
+            onScaleChanged: function (scale) {
                 var scaleValue = previousScaleValue * scale;
                 this.scale = {
                     x: scaleValue,
@@ -185,7 +162,7 @@ var World = {
                 };
                 return true;
             },
-            onScaleEnded: function() {
+            onScaleEnded: function () {
                 previousScaleValue = this.scale.x;
                 return true;
             },
@@ -194,7 +171,7 @@ var World = {
             onError: World.onError
         });
 
-         //播放后母戊鼎的出现时的缩放动画
+        //播放后母戊鼎的出现时的缩放动画
         this.appearingAnimation = this.createAppearingAnimation(this.houMuWuDing, previousScaleValue);//这个参数的值？
 
         //将创建的所有3D模型添加到drawables数组中，方便多资源调用
@@ -223,13 +200,8 @@ var World = {
     },
 
     //小精灵播放语音，待完善
-<<<<<<< HEAD
-    playIntroduction:function playIntroductionFn(){
+    playIntroduction: function playIntroductionFn() {
         World.introductionSound.play();
-=======
-    playIntroduction:function palyIntroductionFn(){
-       World.introductionSound.play();
->>>>>>> e2a74d4beb5d8ba1d3aa1d44ccde89c777c16ce9
     },
 
     //创建静态模型的出现动画
