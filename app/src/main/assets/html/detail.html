@@ -9,7 +9,7 @@
 
     <title></title>
     <script type="text/javascript">
-        function GetQueryString(name) {
+        function GetQueryString(name) {//获取url参数
 			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 			var r = window.location.search.substr(1).match(reg);
 			if(r != null) return decodeURI(r[2]);
@@ -18,7 +18,11 @@
 
         $(function(){
             var id = GetQueryString("id");//获取url参数
-            $.ajax({
+            $("#ar").on("click",function(){//设置按键跳转
+                url = "ar.html?id="+id;
+                window.location.href = url;
+            });
+            $.ajax({//设置页面显示数据
                 type:"POST",
                 dataType:"json",
                 url:"../items.json",
@@ -43,16 +47,14 @@
 <body style="background-color:#ffffff;padding:0px; margin:0px;height:100%;margin: 0px;padding: 0px;">
     <div class="header">
         <a href="#" onClick="javascript:history.back(-1);">
-            <button id="return" class="return_button">
-                <img style="left:12px;height:24px;width:24px;" src="../assets/icons/return_button.png"/>
+            <button id="return" class="return_button" >
+                <img src="../assets/icons/return_button.png"/>
             </button>
         </a>
-        <a href="ar.html">
-            <button id="ar" class="icons gray_icons" style="right:12px;background-color:#9FE2FF;">
-                <img src="../assets/icons/x_button.png"/>
-            </button>
-        </a>
-        <button id="spirit" class="spirit"><img src="../assets/icons/spirit_blue2.png"/></button>
+        <button id="share" class="share_button" >
+            <img src="../assets/icons/share_button.png"/>
+        </button>
+        <button id="spirit" class="spirit"><img src="../assets/icons/spirit_black2.png"/></button>
     </div>
     <div id="item_picture"></div>
 
