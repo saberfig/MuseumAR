@@ -1,17 +1,19 @@
 /*展示静态文物模型界面*/
 
+//test
+
 //声明全局变量，存储控制的模型的位置数据
-var previousTranslateValue={
-    x:0,
-    y:0,
-    z:0
+var previousTranslateValue = {
+    x: 0,
+    y: 0,
+    z: 0
 };
 
 //声明全局变量，存储控制的模型的角度数据
-var previousRotationValue={
-    x:0,
-    y:0,
-    z:0
+var previousRotationValue = {
+    x: 0,
+    y: 0,
+    z: 0
 };
 
 var previousScaleValue = 0.002;//全局变量，表示文物静态模型的大小
@@ -22,7 +24,7 @@ var oneFingerGestureAllowed = false;//先禁止单指模式识别（存疑）
 var flag = true;
 
 //定义方法，启动二指模式识别（存疑）
-AR.context.on2FingerGestureStarted = function() {
+AR.context.on2FingerGestureStarted = function () {
     oneFingerGestureAllowed = false;
 };
 
@@ -60,7 +62,7 @@ var World = {
 
 
     /*创建展示的静态3D模型，所有可能出现的模型都在drawables数组中一次性加载的情况*/
-    createModels:function createModelsFn(){
+    createModels: function createModelsFn() {
 
         //创建音频资源
         this.introductionSound0 = new AR.Sound("assets/audio/defaultAudio.mp3", {
@@ -76,7 +78,7 @@ var World = {
         this.introductionSound1.load();
 
         /*添加小精灵的模型*/
-        this.elf = new AR.Model("assets/augmented/elf.wt3",{
+        this.elf = new AR.Model("assets/augmented/elf.wt3", {
             scale: {
                 x: elfScale,
                 y: elfScale,
@@ -88,13 +90,13 @@ var World = {
                 z: 0.092
             },
             rotate: {
-                global:{
-                    x:0,
-                    y:0,
-                    z:0
+                global: {
+                    x: 0,
+                    y: 0,
+                    z: 0
                 }
             },
-            onClick: function() {
+            onClick: function () {
                 World.playIntroduction(flag);
             },
             enabled: false,//最初设置模型为不可用
@@ -115,31 +117,31 @@ var World = {
                 z: 0.107
             },
             rotate: {
-                global:{
-                    x:320,
-                    y:90,
-                    z:90
+                global: {
+                    x: 320,
+                    y: 90,
+                    z: 90
                 }
             },
 
             //移动
-            onPanBegan: function() {
-                oneFingerGestureAllowed=false;
+            onPanBegan: function () {
+                oneFingerGestureAllowed = false;
                 return true;
             },
-            onPanChanged: function(x,y) {
+            onPanChanged: function (x, y) {
                 //有问题，把y轴都换成了z轴
-                this.translate={
-                    x:previousTranslateValue.x+x,
-                    z:previousTranslateValue.z-y
+                this.translate = {
+                    x: previousTranslateValue.x + x,
+                    z: previousTranslateValue.z - y
                 }
                 return true;
             },
-            onPanEnded: function() {
-                previousTranslateValue.x=this.translate.x;
-                previousTranslateValue.z=this.translate.z;
+            onPanEnded: function () {
+                previousTranslateValue.x = this.translate.x;
+                previousTranslateValue.z = this.translate.z;
 
-               // World.playWaterAnimation();
+                // World.playWaterAnimation();
                 return true;
             },
 
@@ -148,34 +150,34 @@ var World = {
             onError: World.onError
         });
 
-//        this.boiledWater = new AR.Model("assets/augmented/boiledWater.wt3",{
-//            scale:{
-//                x:waterScale,
-//                y:waterScale,
-//                z:waterScale
-//            },
-//            translate:{
-//                x:-0.302,
-//                y:0.981,
-//                z:-0.17
-//            },
-//            rotate:{
-//                 global:{
-//                    x:270,
-//                    y:0,
-//                    z:0
-//                }
-//            }
-//            enabled: false,//最初设置模型为不可用
-//            onLoaded: World.showInfoBar,
-//            onError: World.onError
-//        });
+        //        this.boiledWater = new AR.Model("assets/augmented/boiledWater.wt3",{
+        //            scale:{
+        //                x:waterScale,
+        //                y:waterScale,
+        //                z:waterScale
+        //            },
+        //            translate:{
+        //                x:-0.302,
+        //                y:0.981,
+        //                z:-0.17
+        //            },
+        //            rotate:{
+        //                 global:{
+        //                    x:270,
+        //                    y:0,
+        //                    z:0
+        //                }
+        //            }
+        //            enabled: false,//最初设置模型为不可用
+        //            onLoaded: World.showInfoBar,
+        //            onError: World.onError
+        //        });
 
 
         //将创建的所有3D模型添加到drawables数组中，方便多资源调用
         World.drawables.push(this.elf);
         World.drawables.push(this.bucket);
-//        World.drawables.push(this.boiledWater);
+        //        World.drawables.push(this.boiledWater);
 
     },
 
@@ -200,12 +202,12 @@ var World = {
     },
 
     //小精灵播放语音，待完善
-    playIntroduction:function playIntroductionFn(enabled){
-        if(enabled == true){
+    playIntroduction: function playIntroductionFn(enabled) {
+        if (enabled == true) {
             World.introductionSound0.play();
             flag = false;
         }
-        else{
+        else {
             World.introductionSound1.play();
             flag = true;
         }
