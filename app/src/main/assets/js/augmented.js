@@ -246,6 +246,9 @@ var World = {
     //对象识别成功时，设置drawables数组中所有的模型为可见
     objectRecognized: function objectRecognizedFn() {
         World.hideInfoBar();
+
+
+
         var title_text = document.getElementsByTagName("TITLE")[0].text;//获取当前页面的标签
         if(title_text == "index"){
             World.setAugmentationsEnabled(0, 1, true);
