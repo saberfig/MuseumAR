@@ -38,9 +38,6 @@
             });
         });
 
-        $(document).ready(function(){
-            $('#spirit-content').load('spirit.html');
-        });
     </script>
     <link rel="stylesheet" href="css/default.css">
     <script src="js/augmented.js"></script>
@@ -57,7 +54,13 @@
         <img src="assets/icons/share_button.png"/>
     </button>
 
-    <div id="spirit-content"></div>
+    <button id="spirit" class="spirit"><img onclick="audio_click()" src="assets/icons/spirit_black2.png"/></button>
+
+    <audio id="audio-start" src="assets/audio/smwd.mp3"></audio>
+    <script>
+        var audio_dynamic = document.getElementById("audio-start");
+        // 音频顺序和播放设置
+    </script>
 
 </div>
 

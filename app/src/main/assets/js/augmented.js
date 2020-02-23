@@ -18,8 +18,8 @@ var previousScaleValue = 0.002;//全局变量，表示文物静态模型的大�
 
 var oneFingerGestureAllowed = false;//先禁止单指模式识别（存疑）
 
-var bucketScale = 0.0047;//木桶模型的大小
-var woodScale = 0.02;//木头模型的大小
+var bucketScale = 0.01;//木桶模型的大小 0.0047
+var woodScale = 0.04;//木头模型的大小 0.02
 var meetScale = 0.003;//肉的模型大小
 
 var bucketPouringScale = 0.11;//倒水动画的大小
@@ -176,14 +176,18 @@ var World = {
             onPanChanged: function(x,y) {
                 //有问题，把y轴都换成了z轴
                 this.translate={
-                    x:previousTranslateValue.x+x,
-                    z:previousTranslateValue.z-y
+                    //x:previousTranslateValue.x+x,
+                    //z:previousTranslateValue.z-y
+                    x:previousTranslateValue.x+2*x,
+                    y:previousTranslateValue.y-4*y
+                    //x:this.translate.x+x,
+                    //y:this.translate.y-y,
                 }
                 return true;
             },
             onPanEnded: function() {
                 previousTranslateValue.x = this.translate.x;
-                previousTranslateValue.z = this.translate.z;
+                previousTranslateValue.y = this.translate.y;
                 // if((this.translate.x >=-0.97)&&(this.translate.x<=0)&&(this.translate.y>=0.033)&&(this.translate.y<=0.696)){
                 //     World.meet.enabled = false;
                 // }
@@ -248,7 +252,7 @@ var World = {
         console.log("lzg111111111");
         //World.hideInfoBar();
         console.log("lzg222222222222");
-        var audio = document.getElementById("audio01");
+        var audio = document.getElementById("audio");
         audio.play();
         console.log("lzg3333333333333");
 

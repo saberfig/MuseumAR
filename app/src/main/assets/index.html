@@ -27,10 +27,6 @@
                 url = "ar.html?id="+id;
                 window.location.href = url;
             });
-
-            $(document).ready(function(){
-                $('#spirit-content').load('spirit.html');
-            });
         });
     </script>
 
@@ -38,7 +34,22 @@
 </head>
 
 <body>
-<div id="spirit-content"></div>
+
+<div id="spirit-content">
+    <button id="spirit" class="spirit"><img onclick="audio_click()" src="assets/icons/spirit_black2.png"/></button>
+    <audio id="audio" src="assets/audio/smwd.mp3" loop></audio>
+    <script>
+        var audio = document.getElementById("audio");
+        function audio_click(){
+            if(audio.paused){
+                audio.play();
+            }else if(audio.played){
+                audio.pause();
+            }
+        }
+    </script>
+</div>
+
 <div style="bottom: 20px;width:100%;">
     <button id="photoAlbum" class="icons gray_icons" style="left:16px;bottom: 20px;">
         <img src='assets/icons/photo_album_button.png'/>
@@ -61,4 +72,5 @@
 <script src="js/augmented.js"></script>
 
 </body>
+
 </html>
