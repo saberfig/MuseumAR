@@ -6,6 +6,7 @@
 
     <script src="https://www.wikitude.com/libs/architect.js"></script>
     <script type="text/javascript" src="ade.js"></script><!--ade脚本用于让前端数据和后端数据相匹配-->
+
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 
@@ -36,6 +37,10 @@
                 }
             });
         });
+
+        $(document).ready(function(){
+            $('#spirit-content').load('spirit.html');
+        });
     </script>
     <link rel="stylesheet" href="css/default.css">
     <script src="js/augmented.js"></script>
@@ -51,7 +56,8 @@
     <button id="share" class="share_button">
         <img src="assets/icons/share_button.png"/>
     </button>
-    <button id="spirit" class="spirit"><img src="assets/icons/spirit_black2.png"/></button>
+
+    <div id="spirit-content"></div>
 
 </div>
 

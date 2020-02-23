@@ -8,6 +8,7 @@
 
     <script src="https://www.wikitude.com/libs/architect.js"></script>
     <script type="text/javascript" src="ade.js"></script><!--ade脚本用于让前端数据和后端数据相匹配-->
+
     <script type="text/javascript" src="//www.jb51.net/jslib/jquery/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
@@ -26,6 +27,10 @@
                 url = "ar.html?id="+id;
                 window.location.href = url;
             });
+
+            $(document).ready(function(){
+                $('#spirit-content').load('spirit.html');
+            });
         });
     </script>
 
@@ -33,7 +38,7 @@
 </head>
 
 <body>
-
+<div id="spirit-content"></div>
 <div style="bottom: 20px;width:100%;">
     <button id="photoAlbum" class="icons gray_icons" style="left:16px;bottom: 20px;">
         <img src='assets/icons/photo_album_button.png'/>
@@ -54,5 +59,6 @@
 </div>
 
 <script src="js/augmented.js"></script>
+
 </body>
 </html>

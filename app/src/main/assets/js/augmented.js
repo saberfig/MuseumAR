@@ -245,9 +245,12 @@ var World = {
 
     //对象识别成功时，设置drawables数组中所有的模型为可见
     objectRecognized: function objectRecognizedFn() {
-        World.hideInfoBar();
-
-
+        console.log("lzg111111111");
+        //World.hideInfoBar();
+        console.log("lzg222222222222");
+        var audio = document.getElementById("audio01");
+        audio.play();
+        console.log("lzg3333333333333");
 
         var title_text = document.getElementsByTagName("TITLE")[0].text;//获取当前页面的标签
         if(title_text == "index"){
