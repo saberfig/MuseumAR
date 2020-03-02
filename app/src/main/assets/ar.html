@@ -56,10 +56,30 @@
 
     <button id="spirit" class="spirit"><img onclick="audio_click()" src="assets/icons/spirit_black2.png"/></button>
 
-    <audio id="audio-start" src="assets/audio/smwd.mp3"></audio>
+    <audio id="audio-game" onclick="audio_click"></audio>
     <script>
-        var audio_dynamic = document.getElementById("audio-start");
+        var audio_dynamic = document.getElementById("audio-game");
         // 音频顺序和播放设置
+        function audio_click(){
+            if(audio.paused){
+                audio.play();
+            }else if(audio.played){
+                audio.pause();
+            }
+        }
+
+        var musicList=["assets/audio/dy-2.mp3" ,"assets/audio/dy-1.mp3"];
+        var src=musicList.pop();
+        console.log("111111111"+src);
+        audio_dynamic.src=src;
+        audio_dynamic.play();
+
+        audio_dynamic.addEventListener("ended",playEndedHandler,false);
+        function playEndedHandler(){
+            src = musicList.pop();
+            audio_dynamic.src = src;
+            audio_dynamic.play();
+        }
     </script>
 
 </div>
